@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StudentGrades", "StudentGrades\StudentGrades.vcxproj", "{BAEE6C50-1D63-45C6-88E2-D39A28A9084D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StudentGroup", "StudentGroup\StudentGroup.vcxproj", "{6C28D3E5-5634-4DA1-8E6E-6593A0E4B162}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Exercises", "Exercises\Exercises.vcxproj", "{A79289A1-3D48-433B-A04D-CD25DDE0E493}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAEE6C50-1D63-45C6-88E2-D39A28A9084D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BAEE6C50-1D63-45C6-88E2-D39A28A9084D}.Debug|Win32.Build.0 = Debug|Win32
+		{BAEE6C50-1D63-45C6-88E2-D39A28A9084D}.Release|Win32.ActiveCfg = Release|Win32
+		{BAEE6C50-1D63-45C6-88E2-D39A28A9084D}.Release|Win32.Build.0 = Release|Win32
+		{6C28D3E5-5634-4DA1-8E6E-6593A0E4B162}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6C28D3E5-5634-4DA1-8E6E-6593A0E4B162}.Debug|Win32.Build.0 = Debug|Win32
+		{6C28D3E5-5634-4DA1-8E6E-6593A0E4B162}.Release|Win32.ActiveCfg = Release|Win32
+		{6C28D3E5-5634-4DA1-8E6E-6593A0E4B162}.Release|Win32.Build.0 = Release|Win32
+		{A79289A1-3D48-433B-A04D-CD25DDE0E493}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A79289A1-3D48-433B-A04D-CD25DDE0E493}.Debug|Win32.Build.0 = Debug|Win32
+		{A79289A1-3D48-433B-A04D-CD25DDE0E493}.Release|Win32.ActiveCfg = Release|Win32
+		{A79289A1-3D48-433B-A04D-CD25DDE0E493}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
