@@ -59,3 +59,30 @@ double Grade(double midterm, double final, double median)
 {
 	return (midterm * 0.2 + final * 0.4 + median * 0.4);
 }
+
+bool Fgrade(const StudentInfo &s)
+{
+	return (Grade(s) < 60);
+}
+
+
+containter extract_fails(containter &students)
+{
+	containter fails;
+	containter::iterator iter = students.begin();
+
+	while (iter != students.end())
+	{
+		if (Fgrade(*iter))
+		{
+			fails.push_back(*iter);
+			iter = students.erase(iter);
+		}
+		else
+		{
+			iter++;
+		}
+	}
+
+	return fails;
+}

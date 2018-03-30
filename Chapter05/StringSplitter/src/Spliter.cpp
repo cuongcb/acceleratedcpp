@@ -88,6 +88,21 @@ vector<string> hcat(const vector<string> &left, const vector<string> &right)
 	return ret;
 }
 
+vector<string> center(const vector<string> &v)
+{
+	typedef vector<string>::size_type vec_sz;
+	vector<string> ret;
+	string::size_type swidth = width(v);
+
+	vec_sz size = v.size();
+	if (size == 0)
+	{
+		return ret;
+	}
+
+	
+}
+
 vector<string> split(const string &s, char delimiter)
 {
 	vector<string> output;
