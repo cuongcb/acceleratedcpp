@@ -31,13 +31,26 @@ using std::vector;		using std::string;
 using std::istream;		using std::getline;
 using std::max;			using std::cout;
 using std::endl;		using std::setw;
-using std::right;		using std::left;
+using std::cin;			using std::sort;
 
 typedef struct {
 	typedef vector<string>::size_type vec_sz;
 	vector<string> rotatedString;
 	vec_sz startPos;
 } rString_t;
+
+void printRotateString(const vector<rString_t> &rStrings)
+{
+	for (auto element : rStrings)
+	{
+		for (auto word : element.rotatedString)
+		{
+			cout << word << " ";
+		}
+		cout << endl;
+		cout << element.startPos << endl;
+	}
+}
 
 istream &readline(istream &in, vector<string> &input)
 {
@@ -114,6 +127,12 @@ vector<rString_t> rotate(const vector<string> &words)
 		element.startPos = (wsize - (iter - words.begin())) % wsize;
 
 		ret.push_back(element);
+		//for (auto word : element.rotatedString)
+		//{
+		//	cout << word << " ";
+		//}
+		//cout << endl;
+		//cout << element.startPos << endl;
 	}
 
 	return ret;
@@ -124,34 +143,67 @@ bool compare(const rString_t &a, const rString_t &b)
 	return (a.rotatedString[0] < b.rotatedString[0]);
 }
 
-void display(const rString_t &a)
+void display(const rString_t &a, vector<string>::size_type maxlen)
 {
-	vector<string>::size_type maxlen;
+	string left, right;
 	for (vector<string>::const_iterator iter = a.rotatedString.begin() + a.startPos; iter != a.rotatedString.end(); iter++)
 	{
-		cout << setw(maxlen) << right << *iter << " ";
+		left += *iter;
+		left += " ";
 	}
-
-	cout << '\t';
 
 	for (vector<string>::const_iterator iter = a.rotatedString.begin(); iter != a.rotatedString.begin() + a.startPos; iter++)
 	{
-		cout << setw(maxlen) << left << *iter << " ";
+		right += *iter;
+		right += " ";
 	}
 
-	cout << endl;
+	//cout << string(maxlen - left.size(), ' ') << left << string(8, ' ') << right << string(maxlen - right.size(), ' ') << endl;
+	//cout << left << endl;
+	//cout << right << endl;
 }
 
 void display(const vector<rString_t> &rStrings)
 {
-	vector<string>::size_type maxlen = 0;
 	for (vector<rString_t>::const_iterator iter = rStrings.begin(); iter != rStrings.end(); iter++)
 	{
-		display(*iter);
+		//display(*iter);
 	}
 }
 
 int main()
 {
+	vector<string> input;
+	readline(cin, input);
 
+	vector<string>::size_type maxlen = width(input);
+
+	vector<rString_t> permutedIndex;
+	
+	for (auto line : input)
+	{
+		vector<string> words = split(line);
+		vector<rString_t> rotLine = rotate(words);
+		permutedIndex.insert(permutedIndex.end(), rotLine.begin(), rotLine.end());
+	}
+
+	printRotateString(permutedIndex);
+
+	sort(permutedIndex.begin(), permutedIndex.end(), compare);
+
+	printRotateString(permutedIndex);
+
+	for (vector<rString_t>::const_iterator iter = permutedIndex.begin(); iter != permutedIndex.end(); iter++)
+	{
+		display(*iter, maxlen);
+		//for (auto word : iter->rotatedString)
+		//{
+		//	cout << word << " ";
+		//}
+		//cout << endl;
+	}
+
+	system("pause");
+
+	return 0;
 }
