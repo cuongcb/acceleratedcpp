@@ -158,7 +158,14 @@ void display(const rString_t &a, vector<string>::size_type maxlen)
 		right += " ";
 	}
 
-	//cout << string(maxlen - left.size(), ' ') << left << string(8, ' ') << right << string(maxlen - right.size(), ' ') << endl;
+	if (a.startPos != 0)
+	{
+		cout << string(maxlen - left.size(), ' ') << left << string(8, ' ') << right << string(maxlen - right.size(), ' ') << endl;
+	}
+	else
+	{
+		cout << string(maxlen + 8, ' ') << left << string(maxlen - right.size(), ' ') << endl;
+	}
 	//cout << left << endl;
 	//cout << right << endl;
 }
@@ -187,11 +194,11 @@ int main()
 		permutedIndex.insert(permutedIndex.end(), rotLine.begin(), rotLine.end());
 	}
 
-	printRotateString(permutedIndex);
+	//printRotateString(permutedIndex);
 
 	sort(permutedIndex.begin(), permutedIndex.end(), compare);
 
-	printRotateString(permutedIndex);
+	//printRotateString(permutedIndex);
 
 	for (vector<rString_t>::const_iterator iter = permutedIndex.begin(); iter != permutedIndex.end(); iter++)
 	{

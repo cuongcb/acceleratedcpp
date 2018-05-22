@@ -65,6 +65,10 @@ bool Fgrade(const StudentInfo &s)
 	return (Grade(s) < 60);
 }
 
+bool did_all_hw(const StudentInfo &s)
+{
+	return ((find(s.homework.begin(), s.homework.end(), 0) == s.homework.end()));
+}
 
 containter extract_fails(containter &students)
 {
@@ -85,4 +89,72 @@ containter extract_fails(containter &students)
 	}
 
 	return fails;
+}
+
+double GradeAux(const StudentInfo &s)
+{
+	try {
+		return Grade(s);
+	} catch (domain_error) {
+		return Grade(s.midterm, s.final, 0);
+	}
+}
+
+double median_analysis(const vector<StudentInfo> &students)
+{
+	vector<double> grades;
+
+	transform(students.begin(), students.end(), back_inserter(grades), GradeAux);
+
+	return Median(grades);
+}
+
+void write_analysis(ostream &out, 
+		    const string &name, 
+		    double analysis(const vector<StudentInfo> &students), 
+		    const vector<StudentInfo> &did, 
+		    const vector<StudentInfo> &didnt)
+{
+	out << name << ": median(did) = " << analysis(did) <<
+		", median(didnt) = " << analysis(didnt) << endl;
+}
+
+double average(const vector<double> &v)
+{
+	return accumulate(v.begin(), v.end(), 0.0) / v.size();
+}
+
+double average_grade(const StudentInfo &s)
+{
+	return Grade(s.midterm, s.final, average(s.homework));
+}
+
+double average_analysis(const vector<StudentInfo> &students)
+{
+	vector<double> grades;
+
+	transform(students.begin(), students.end(), back_inserter(grades), average_grade);
+
+	return Median(grades);
+}
+
+double optimistic_median(const StudentInfo &s)
+{
+	vector<double> nonzero;
+
+	remove_copy(s.homework.begin(), s.homework.end(), back_inserter(nonzero), 0);
+
+	if (nonzero.empty())
+		return Grade(s.midterm, s.final, 0);
+	else
+		return Grade(s.midterm, s.final, Median(nonzero));
+}
+
+double optimistic_analysis(const vector<StudentInfo> &students)
+{
+	vector<double> grades;
+
+	transform(students.begin(), students.end(), back_inserter(grades), optimistic_median);
+
+	return Median(grades);
 }
