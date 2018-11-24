@@ -1,6 +1,7 @@
 #pragma once
 #include <climits>
 #include <cstdlib>
+#include <ctime>
 #include <stdexcept>
 
 typedef int random_t;
